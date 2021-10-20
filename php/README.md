@@ -14,3 +14,16 @@
 
 ## Start app
 Open browser and visit: http://localhost
+
+## Requirements
+- Films list page that displays list of all films [http://localhost/films](http://localhost/films)
+
+- Film detail page that displays film metadata, characters, vehicles, planets, etc.
+
+### Bonus Points
+- Implement one or more detail pages for characters, vehicles, planets, etc. The detail pages should be accessible from the film detail page
+- Implement client side search filter on the films list page to filter displayed films by title, or description
+
+### Questions
+- Assuming the Star Wars API was slow, what are some optimizations that could be implemented to improve the user experience?
+- Any improvements you would make to your application?

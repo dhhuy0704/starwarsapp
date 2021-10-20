@@ -217,3 +217,54 @@ TypeFactory::map('time', StringType::class);
 //Inflector::rules('plural', ['/^(inflect)or$/i' => '\1ables']);
 //Inflector::rules('irregular', ['red' => 'redlings']);
 //Inflector::rules('uninflected', ['dontinflectme']);
+
+/**
+ * Basic CURL
+ */
+function do_request($url, $method = "GET", $data = [])
+{
+    if (!extension_loaded('curl')) {
+        exit('Extension CURL is not enabled');
+    }
+
+    $ch = curl_init();
+    $curlConfig = [
+        CURLOPT_URL            => $url,
+        CURLOPT_HTTPHEADER     => ['Content-Type: application/json'],
+        CURLOPT_POST           => true,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_CUSTOMREQUEST  => $method,
+        CURLOPT_SSL_VERIFYPEER => false,
+        CURLOPT_SSL_VERIFYHOST => 2,
+        CURLOPT_POSTFIELDS     => http_build_query($data)
+    ];
+    curl_setopt_array($ch, $curlConfig);
+    $res = curl_exec($ch);
+
+    $error_msg = curl_error($ch);
+    if ($error_msg) {
+        logger($error_msg);
+    }
+
+    curl_close($ch);
+    return $res;
+}
+
+/**
+ * Customer logger
+ * Params
+ *  $msg String
+ *  $kind String (0:Info|1:Warning|2:Error)
+ * Return void
+ */
+function logger($msg, $kind = 0)
+{
+    $logPath = LOGS . DS . "custom-logs";
+    $fulltime = date('Y/m/d h:i:s A', time());
+    $date = date('Ymd', time());
+    $kindTxt = array(0 => "INFO", 1 => "WARNING", 2 => "ERROR");
+    if (!file_exists($logPath)) {
+        mkdir($logPath, 0777);
+    }
+    error_log("[" . $kindTxt[$kind] . "]" . "[" . $fulltime . "] " . $_SERVER['SERVER_NAME'] . ": " . $msg . "\n", 3, $logPath . "/log_" . $date);
+}
