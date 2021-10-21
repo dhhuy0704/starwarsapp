@@ -14,12 +14,12 @@ class AppTable extends Table
         parent::initialize($config);
     }
 
-    public function get_all(): array
+    public function get_all(): object
     {
-        $url = ROOT_API .'/'. $this->_table;
+        $url = ROOT_API . '/' . $this->_table;
         $res = do_request($url);
-        pr($res);
-        exit;
-        return [];
+        $res = json_decode($res);
+        return $res;
     }
+
 }

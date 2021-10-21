@@ -12,9 +12,10 @@ use Cake\View\Exception\MissingTemplateException;
 class FilmsController extends AppController
 {
 
-    public function index()
+    public function index(): void
     {
-        $res = $this->Films->get_all();
-        pr($res);
+        $res = $this->Films->get_all()->results;
+        asort($res);
+        $this->set('films', $res);
     }
 }
