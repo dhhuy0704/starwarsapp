@@ -7,19 +7,19 @@ namespace App\Model\Table;
 use App\Model\Table\AppTable;
 use stdClass;
 
-class PeopleTable extends AppTable
+class VehiclesTable extends AppTable
 {
 
     public function initialize(array $config): void
     {
-        $this->setTable('people');
+        $this->setTable('vehicles');
     }
 
-    public function get_people_list(): object
+    public function get_vehicles_list(): object
     {
         /**
          * Note:
-         * API of people returns only 10 records per page request.
+         * API of vehicles returns only 10 records per page request.
          */
         $res = $this->get_all()->results;
         $new_res = new stdClass();

@@ -7,19 +7,19 @@ namespace App\Model\Table;
 use App\Model\Table\AppTable;
 use stdClass;
 
-class PeopleTable extends AppTable
+class PlanetsTable extends AppTable
 {
 
     public function initialize(array $config): void
     {
-        $this->setTable('people');
+        $this->setTable('planets');
     }
 
-    public function get_people_list(): object
+    public function get_planets_list(): object
     {
         /**
          * Note:
-         * API of people returns only 10 records per page request.
+         * API of planets returns only 10 records per page request.
          */
         $res = $this->get_all()->results;
         $new_res = new stdClass();
