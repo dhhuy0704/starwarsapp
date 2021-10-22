@@ -66,6 +66,32 @@ if (!env('APP_NAME') && file_exists(CONFIG . '.env')) {
         ->putenv()
         ->toEnv()
         ->toServer();
+} else {
+    echo('<h1>.ENV config not found. </h1>');
+    echo('<code>Please check out config information at /php/README.md</code>');
+    exit;
+}
+
+/**
+ * Check memcached is installed and loaded
+ */
+if(class_exists('Memcached')) {
+    $server = '127.0.0.1';
+    $port   = 11211;
+    
+    $memcached = new Memcached();
+    $memcached->addServer($server, $port);
+    $status = $memcached->getStats();
+    
+    if(!isset($status[$server.":".$port])) {
+        echo('<h1>Cannot connect to Memcached server</h1>');
+        echo('<code>Please check out /README.md to start Memcached</code>');
+        exit;
+    }
+} else {
+    echo('<h1>Memcached extension is not enabled. </h1>');
+    echo('<code>Please check out /php/README.md to install or enable Memcached</code>');
+    exit;
 }
 
 /*
@@ -227,26 +253,35 @@ function do_request($url, $method = "GET", $data = [])
         exit('Extension CURL is not enabled');
     }
 
-    $ch = curl_init();
-    $curlConfig = [
-        CURLOPT_URL            => $url,
-        CURLOPT_HTTPHEADER     => ['Content-Type: application/json'],
-        CURLOPT_POST           => true,
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_CUSTOMREQUEST  => $method,
-        CURLOPT_SSL_VERIFYPEER => false,
-        CURLOPT_SSL_VERIFYHOST => 2,
-        CURLOPT_POSTFIELDS     => http_build_query($data)
-    ];
-    curl_setopt_array($ch, $curlConfig);
-    $res = curl_exec($ch);
+    $memcached = new Memcached();
+    $memcached->addServer('127.0.0.1', 11211);
+    $response = $memcached->get($url);
 
-    $error_msg = curl_error($ch);
-    if ($error_msg) {
-        logger($error_msg);
+    $res = '';
+    if (!$response) {
+        $ch = curl_init();
+        $curlConfig = [
+            CURLOPT_URL            => $url,
+            CURLOPT_HTTPHEADER     => ['Content-Type: application/json'],
+            CURLOPT_POST           => true,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_CUSTOMREQUEST  => $method,
+            CURLOPT_SSL_VERIFYPEER => false,
+            CURLOPT_SSL_VERIFYHOST => 2,
+            CURLOPT_POSTFIELDS     => http_build_query($data)
+        ];
+        curl_setopt_array($ch, $curlConfig);
+        $res = curl_exec($ch);
+        $error_msg = curl_error($ch);
+        if ($error_msg) {
+            logger($error_msg);
+        }
+        curl_close($ch);
+        $memcached->set($url, $res);
+    } else {
+        $res = $response;
     }
 
-    curl_close($ch);
     return $res;
 }
 

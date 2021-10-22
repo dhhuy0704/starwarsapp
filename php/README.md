@@ -12,6 +12,27 @@
 4. $ sudo chmod -r 777 tmp
 5. $ sudo chmod -r 777 logs
 
+## Setup ENV
+- Setup default config from CakePHP
+- Setup API config for app
+```
+export ROOT_API="https://swapi.dev/api"
+```
+
+## Setup Memcached server
+```
+// Ubuntu 20.04
+$ sudo apt update
+$ sudo apt install memcached libmemcached-tools
+$ sudo apt install php-memcached
+
+$ sudo service memcached start
+Starting memcached: memcached.
+
+$ sudo service memcached status
+memcached: memcached (pid XXX) is running
+```
+
 ## Start app
 Open browser and visit: http://localhost
 
