@@ -14,9 +14,17 @@ class AppTable extends Table
         parent::initialize($config);
     }
 
-    public function get_all(): object
+    public function get_all($page = 1): object
     {
-        $url = ROOT_API . '/' . $this->_table;
+        $url = ROOT_API . '/' . $this->_table .'/?page=' . $page;
+        $res = do_request($url);
+        $res = json_decode($res);
+        return $res;
+    }
+
+    public function get_one($id): object
+    {
+        $url = ROOT_API . '/' . $this->_table . '/' . $id;
         $res = do_request($url);
         $res = json_decode($res);
         return $res;

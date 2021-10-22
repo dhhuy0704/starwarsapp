@@ -1,8 +1,8 @@
 <h1>Films list</h1>
 <table>
     <tr>
-        <th>Title</th>
         <th>Episode #</th>
+        <th>Title</th>
         <th>Director</th>
         <th>Release Date</th>
     </tr>

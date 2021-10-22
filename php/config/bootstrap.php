@@ -268,3 +268,13 @@ function logger($msg, $kind = 0)
     }
     error_log("[" . $kindTxt[$kind] . "]" . "[" . $fulltime . "] " . $_SERVER['SERVER_NAME'] . ": " . $msg . "\n", 3, $logPath . "/log_" . $date);
 }
+
+/**
+ * Get query ID from API URL
+ */
+function get_id_from_url($url) {
+    $tmp = explode('/', $url);
+    $tmp = array_filter($tmp);
+    $tmp = end($tmp);
+    return $tmp;
+}

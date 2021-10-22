@@ -18,7 +18,7 @@ Open browser and visit: http://localhost
 ## Requirements
 - Films list page that displays list of all films [http://localhost/films](http://localhost/films)
 
-- Film detail page that displays film metadata, characters, vehicles, planets, etc.
+- Film detail page that displays film metadata, characters, vehicles, planets, etc. [http://localhost/films/view/1](http://localhost/films/view/1)
 
 ### Bonus Points
 - Implement one or more detail pages for characters, vehicles, planets, etc. The detail pages should be accessible from the film detail page
