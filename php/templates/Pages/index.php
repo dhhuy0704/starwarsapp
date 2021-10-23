@@ -34,7 +34,10 @@
             <div class="content">
                 <div class="row">
                     <div class="column">
-                        <!-- <div class="message default text-center"></div> -->
+                        <div class="message default text-center">
+                            This project is using for interviewing, this is a simple app with some fetching data from API.<br>
+                            Written by TommyDo (dhhuy0704@hotmail.com).
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -87,9 +90,29 @@
                             <li>
                                 - Assuming the Star Wars API was slow, what are some optimizations that could be implemented to improve the user experience?
                             </li>
+                            <ol>
+                                <p>
+                                    <i>
+                                    My solution to this project is using Memcached to stores user browsing data. It will helps users could play around with entities more faster each time they come back to previous information.
+                                    </i>
+                                </p>
+                            </ol>
                             <li>
                                 - Any improvements you would make to your application?
                             </li>
+                            <ol>
+                                <i>
+                                    1. Using Memcached is good for performance, avoid fetching much data from API. However, it is also a weakness, every time the API has new updates, the app cannot know and update cache by itself. To improve this, I will integrate caching manager which is allowing users to handle clear cache manually as well as set a timer to refresh cache data.
+                                </i>
+                            </ol>
+                            <ol>
+                                <i>
+                                2. Some of the characters' names in the Film details are not shown their name correctly. This is because the get list API only returns 10 records per page. Moreover, on every list, I did not integrate paging tab, that allows the user see more records.
+                                </i>
+                            </ol>
+                            <h4>Review my code on
+                            <a href="https://github.com/dhhuy0704/starwarsapp" target="_blank">Github.com</a>
+                            </h4>
                         </ul>
                     </div>
                     
