@@ -1,25 +1,27 @@
-<h1>Films list</h1>
+<h1>People list</h1>
 <table>
     <tr>
-        <th>Episode #</th>
-        <th>Title</th>
-        <th>Director</th>
-        <th>Release Date</th>
+        <th>Name</th>
+        <th>Birth Year</th>
+        <th>Gender</th>
+        <th>Height</th>
     </tr>
 
     <!-- Here is where we iterate through our $articles query object, printing out article info -->
 
-    <?php foreach ($films as $film) : ?>
+    <?php foreach ($people as $person) : ?>
         <tr>
-            <td><?= $film->episode_id ?></td>
             <td>
-                <?= $this->Html->link($film->title, ['action' => 'view', $film->episode_id]) ?>
+                <?= $this->Html->link($person->name, ['action' => 'view', get_id_from_url($person->url)]) ?>
             </td>
             <td>
-                <?= $film->director ?? "Unknown" ?>
+                <?= $person->gender ?? "Unknown" ?>
             </td>
             <td>
-                <?= $film->release_date ?? "N/D" ?>
+                <?= $person->director ?? "Unknown" ?>
+            </td>
+            <td>
+                <?= $person->height ?? "Unknown" ?>
             </td>
         </tr>
     <?php endforeach; ?>

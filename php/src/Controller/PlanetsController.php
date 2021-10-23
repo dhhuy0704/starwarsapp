@@ -11,14 +11,17 @@ class PlanetsController extends AppController
      */
     public function index(): void
     {
-        $res = $this->Films->get_all()->results;
+        $res = $this->Planets->get_all()->results;
         asort($res);
         $this->set('planets', $res);
     }
 
     public function view($id = null): void
     {
-        $res = $this->Films->get_one($id);
+        $res = $this->Planets->get_one($id);
+
+        $res->residents = $this->build_character_list($res->residents);
+        $res->films = $this->build_film_list($res->films);
         $this->set('planet_info', $res);
     }
 

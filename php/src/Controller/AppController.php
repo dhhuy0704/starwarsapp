@@ -19,6 +19,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use Cake\Controller\Controller;
+use stdClass;
 
 /**
  * Application Controller
@@ -61,4 +62,67 @@ class AppController extends Controller
     {
         define('ROOT_API', env('ROOT_API'));
     }
+
+    /**
+     * Customize functions
+     */
+    public function build_film_list(): object
+    {
+        $this->loadModel('Films');
+        $films = $this->Films->get_films_list();
+        return $films;
+    }
+
+    public function build_character_list($data): object
+    {
+        $this->loadModel('People');
+        $people = $this->People->get_people_list();
+
+        $film_characters = new stdClass();
+        foreach ($data as $item) {
+            $id = get_id_from_url($item);
+            if (isset($people->$id)) {
+                $film_characters->$id = $people->$id;
+            } else {
+                $film_characters->$id = str_replace(ROOT_API.'/', '', $item);
+            }
+        }
+        return $film_characters;
+    }
+
+    public function build_vehicle_list($data): object
+    {
+        $this->loadModel('Vehicles');
+        $vehicles = $this->Vehicles->get_vehicles_list();
+
+        $film_vehicles = new stdClass();
+        foreach ($data as $item) {
+            $id = get_id_from_url($item);
+            if (isset($vehicles->$id)) {
+                $film_vehicles->$id = $vehicles->$id;
+            } else {
+                $film_vehicles->$id = str_replace(ROOT_API.'/', '', $item);
+            }
+        }
+        // pr($film_vehicles);exit;
+        return $film_vehicles;
+    }
+
+    public function build_planet_list($data): object
+    {
+        $this->loadModel('Planets');
+        $planets = $this->Planets->get_planets_list();
+
+        $film_planets = new stdClass();
+        foreach ($data as $item) {
+            $id = get_id_from_url($item);
+            if (isset($planets->$id)) {
+                $film_planets->$id = $planets->$id;
+            } else {
+                $film_planets->$id = str_replace(ROOT_API.'/', '', $item);
+            }
+        }
+        return $film_planets;
+    }
+
 }

@@ -16,9 +16,9 @@
     </ul>
     <li>Vehicles:
     <ul>
-        <?php foreach ($film_info->vehicles as $vehicle) : ?>
+        <?php foreach ($film_info->vehicles as $key => $vehicle) : ?>
             <li>
-                <a href="/vehicles/view/<?= $id ?>">
+                <a href="/vehicles/view/<?= $key ?>">
                     <?= $vehicle ?>
                 </a>
             </li>
@@ -26,9 +26,9 @@
     </ul>
     <li>Planets:
     <ul>
-        <?php foreach ($film_info->planets as $planet) : ?>
+        <?php foreach ($film_info->planets as $key => $planet) : ?>
             <li>
-                <a href="/planets/view/<?= $id ?>">
+                <a href="/planets/view/<?= $key ?>">
                     <?= $planet ?>
                 </a>
             </li>

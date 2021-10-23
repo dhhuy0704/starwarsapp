@@ -11,14 +11,16 @@ class VehiclesController extends AppController
      */
     public function index(): void
     {
-        $res = $this->Films->get_all()->results;
+        $res = $this->Vehicles->get_all()->results;
         asort($res);
         $this->set('vehicles', $res);
     }
 
     public function view($id = null): void
     {
-        $res = $this->Films->get_one($id);
+        $res = $this->Vehicles->get_one($id);
+
+        $res->films = $this->build_film_list();
         $this->set('vehicle_info', $res);
     }
 
