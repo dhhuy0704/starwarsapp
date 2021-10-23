@@ -62,15 +62,18 @@
                                 <ul>
                                     <li>
                                         Character
-                                        <a href="/people/view/1" target="_blank">Character detail</a>
+                                        <a href="/people" target="_blank">Characters list</a> |
+                                        <a href="/people/view/1" target="_blank">Luke Skywalker</a>
                                     </li>
                                     <li>
                                         Vehicle
-                                        <a href="/vehicles/view/1" target="_blank">Vehicle detail</a>
+                                        <a href="/vehicles" target="_blank">Vehicles list</a> |
+                                        <a href="/vehicles/view/4" target="_blank">Sand Crawler</a>
                                     </li>
                                     <li>
                                         Planet
-                                        <a href="/planets/view/1" target="_blank">Planet detail</a>
+                                        <a href="/planets" target="_blank">Planets list</a> |
+                                        <a href="/planets/view/1" target="_blank">Tatooine</a>
                                     </li>
                                 </ul>
                             </li>
