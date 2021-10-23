@@ -79,6 +79,7 @@
                             </li>
                             <li>
                                 - Implement client side search filter on the films list page to filter displayed films by title, or description
+                                <a href="/films?search=new" target="_blank">Search for "A new hope"</a>
                             </li>
 
                             <hr>

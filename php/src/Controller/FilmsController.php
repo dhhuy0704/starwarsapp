@@ -12,7 +12,10 @@ class FilmsController extends AppController
      */
     public function index(): void
     {
-        $res = $this->Films->get_all()->results;
+        $keyword = $this->request->getQuery('search');
+        $page = $this->request->getQuery('page') ?? 1;
+        $res = $this->Films->get_all($page, $keyword)->results;
+
         usort($res, function ($a, $b) {
             return strcmp((string) $a->episode_id, (string) $b->episode_id);
         });

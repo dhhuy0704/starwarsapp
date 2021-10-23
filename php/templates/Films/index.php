@@ -1,4 +1,12 @@
 <h1>Films list</h1>
+
+<?= $this->Form->create(null, ['url' => ['action' => 'index'], 'type' => 'get']); ?>
+<?= $this->Form->text('search', [
+    'value' => $this->request->getQuery('search'),
+    'placeholder' => 'What episode would you like to watch tonight?'
+]); ?>
+<?= $this->Form->submit('Search'); ?>
+
 <table>
     <tr>
         <th>Episode #</th>
