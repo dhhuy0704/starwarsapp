@@ -7,8 +7,6 @@
         <th>Has Water?</th>
     </tr>
 
-    <!-- Here is where we iterate through our $articles query object, printing out article info -->
-
     <?php foreach ($planets as $planet) : ?>
         <tr>
             <td>

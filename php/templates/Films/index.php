@@ -15,8 +15,6 @@
         <th>Release Date</th>
     </tr>
 
-    <!-- Here is where we iterate through our $articles query object, printing out article info -->
-
     <?php foreach ($films as $film) : ?>
         <tr>
             <td><?= $film->episode_id ?></td>

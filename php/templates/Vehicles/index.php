@@ -7,8 +7,6 @@
         <th>Vehicle Class</th>
     </tr>
 
-    <!-- Here is where we iterate through our $articles query object, printing out article info -->
-
     <?php foreach ($vehicles as $vehicle) : ?>
         <tr>
             <td>

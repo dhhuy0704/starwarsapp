@@ -104,7 +104,6 @@ class AppController extends Controller
                 $film_vehicles->$id = str_replace(ROOT_API.'/', '', $item);
             }
         }
-        // pr($film_vehicles);exit;
         return $film_vehicles;
     }
 

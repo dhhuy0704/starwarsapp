@@ -7,8 +7,6 @@
         <th>Height</th>
     </tr>
 
-    <!-- Here is where we iterate through our $articles query object, printing out article info -->
-
     <?php foreach ($people as $person) : ?>
         <tr>
             <td>
