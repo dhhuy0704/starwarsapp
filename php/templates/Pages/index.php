@@ -20,13 +20,13 @@
 <body>
     <header>
         <div class="container text-center">
-            <a href="https://cakephp.org/" target="_blank" rel="noopener">
+            <a href="https://swapi.dev/documentation" target="_blank" rel="noopener">
                 <img src="https://img.icons8.com/ios/150/000000/stormtrooper.png"/>
             </a>
             <h1>
                 Welcome to STARWARS App
             </h1>
-            <h4>built on CakePHP Strawberry (🍓)</h4>
+            <h4>built on <a href="https://cakephp.org/">CakePHP</a> Strawberry (🍓)</h4>
         </div>
     </header>
     <main class="main">
