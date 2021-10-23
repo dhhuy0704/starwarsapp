@@ -11,17 +11,17 @@ Implement a Star Wars info application. The application can be built for any pla
 The visual aesthetics of the app are not of importance, we will only be reviewing your code for coding style, clarity, design, architecture, robustness to handle bad data and errors, etc.
 
 ## Requirements
-• Use Star Wars API ( https://swapi.dev )
-• Films list page that displays list of all films
-• Film detail page that displays film metadata, characters, vehicles, planets, etc.
+- Use Star Wars API ( https://swapi.dev )
+- Films list page that displays list of all films
+- Film detail page that displays film metadata, characters, vehicles, planets, etc.
 
 ## Bonus Points
-• Implement one or more detail pages for characters, vehicles, planets, etc. The detail pages should be accessible from the film detail page
-• Implement client side search filter on the films list page to filter displayed films by title, or description
+- Implement one or more detail pages for characters, vehicles, planets, etc. The detail pages should be accessible from the film detail page
+- Implement client side search filter on the films list page to filter displayed films by title, or description
 
 ## Questions
-• Assuming the Star Wars API was slow, what are some optimizations that could be implemented to improve the user experience?
-• Any improvements you would make to your application?
+- Assuming the Star Wars API was slow, what are some optimizations that could be implemented to improve the user experience?
+- Any improvements you would make to your application?
 
 ## Time
-• One week to complete
+- One week to complete
